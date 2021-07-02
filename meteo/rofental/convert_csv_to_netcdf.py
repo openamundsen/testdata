@@ -83,7 +83,7 @@ for station_num in range(len(meteo.station)):
     meteo_cur = meteo_cur.drop_vars(['station', 'station_name'])
 
     # Write only data from first to last non-nan timestep
-    start_date, end_date = meteo_cur.dropna(dim='time').time.to_index()[[0, -1]]
+    start_date, end_date = meteo_cur.dropna(dim='time', how='all').time.to_index()[[0, -1]]
     meteo_cur = meteo_cur.sel(time=slice(start_date, end_date))
 
     filename = f'{out_dir}/{station_id}.nc'
