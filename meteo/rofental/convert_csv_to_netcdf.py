@@ -1,8 +1,8 @@
 import openamundsen as oa
 import tempfile
 
-start_date = '1900-01-01'
-end_date = '2100-12-31'
+start_date = '2014-01-01'
+end_date = '2020-12-31'
 out_dir = 'netcdf'
 
 config = {
@@ -57,12 +57,14 @@ meteo = meteo[[
     'rel_hum',
     'sw_in',
     'wind_speed',
+    'wind_dir',
 ]].rename_vars({
     'temp': 'tas',
     'precip': 'pr',
     'rel_hum': 'hurs',
     'sw_in': 'rsds',
     'wind_speed': 'wss',
+    'wind_dir': 'wind_dir',
 })
 
 meteo['pr'] /= model.timestep
